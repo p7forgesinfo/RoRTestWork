@@ -1,24 +1,19 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Это тестовое задание в компанию RnD Soft
 
-Things you may want to cover:
-
-* Ruby version
-
+* Ruby version 5.1.7 + SLIM
 * System dependencies
-
-* Configuration
-
+  - SQLite3
+  - Redis v 4+ (but work with v 3.2)
+  - Sidekiq
+  - mailcatcher
+    Warn: Use with ports: mailcatcher --http-port 1085 --smtp-port 1035
+    
 * Database creation
-
+  Just simple instal SQLite3
+  
 * Database initialization
-
+  Run rails mirgations: rails db:migrate
+  
 * How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
