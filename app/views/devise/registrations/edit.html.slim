@@ -1,0 +1,56 @@
+div.row
+  h3 = t('user.pages.edit')
+
+div.row
+  = form_for(resource, as: resource_name, url: registration_path(resource_name), method: :put) do |f|
+    - if resource.errors.any?
+      .field.form-group.alert.alert-warning
+        #error_explanation
+          = render "devise/shared/error_messages", resource: resource
+    
+    .field.form-group
+      = f.label :email, t('user.email')
+      = f.email_field :email,
+                       autofocus: true,
+                       autocomplete: "email",
+                       class: "form-control"
+
+    .field.form-group
+      = f.label :password, t('user.password')
+      i = t('user.info.leave_blank')
+      = f.password_field :password,
+                          autocomplete: "new-password",
+                          class: "form-control"
+
+      - if @minimum_password_length
+        em
+          = @minimum_password_length
+          = t('user.password_min')
+
+    .field.form-group
+      = f.label :password_confirmation, t('user.password_confirm')
+      = f.password_field :password_confirmation,
+                          autocomplete: "new-password",
+                          class: "form-control"
+
+    .field.form-group
+      = f.label :current_password, t('user.current_password')
+      i = t("user.info.we_need_current_password")
+      = f.password_field :current_password,
+                          autocomplete: "current-password",
+                          class: "form-control"
+    .actions.form-group
+      = f.submit t('user.actions.update'), class: "btn btn-success"
+  
+div.row
+  h3 = t('user.actions.cancel')
+
+div.row
+  = button_to t('user.actions.cancel'),
+              registration_path(resource_name),
+              data: { confirm: t('questions.are_you_sure') },
+              method: :delete,
+              class: "btn btn-warning"
+
+div.row
+  = link_to t('back'), :back

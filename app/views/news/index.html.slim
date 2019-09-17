@@ -1,0 +1,24 @@
+div.row
+    h1 = t('pages.news')
+
+-if notice
+    div.row.alert.alert-success
+         = notice
+
+- @news.order(date: :desc, created_at: :desc).each do |news|
+    div.row.h3.bg-light = news.title
+
+    div.row = news.date.strftime(t('news.date') + ": %d/%m/%y")
+
+    div.row
+        | Редакций: 
+        = news.redactions
+
+    div.row.bg-light
+        pre = news.text.truncate(250, omission: "...")
+
+    div.row.mb-5
+        = button_to t('news.actions.showall'),
+                    news,
+                    class: "btn btn-success btn-sm",
+                    method: :get

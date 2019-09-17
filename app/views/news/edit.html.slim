@@ -1,0 +1,11 @@
+div.row
+	h1 = t('news.titles.edit')
+
+div.row
+	== render 'form'
+
+div.row
+	= button_to t('news.actions.back'), 
+				news_index_path,
+				class: "btn btn-info ml-1",
+				method: :get

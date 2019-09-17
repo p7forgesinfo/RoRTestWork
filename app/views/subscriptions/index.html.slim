@@ -1,0 +1,45 @@
+div.row.h1 = t('subscription.title')
+
+-if notice
+    div.row.alert.alert-success
+         = notice
+
+div.row.alert.alert-success
+  - if @isSignedDaily
+    div.col-md
+      = t('subscription.info.sub_daily')
+    div.col-sm.text-right
+      - @dailySubscription.each do |subscription|
+        = button_to t('subscription.unsubscribe'),
+                    subscription, 
+                    class: "btn btn-danger", 
+                    data: { confirm: t('questions.are_you_sure')},
+                    method: :delete
+  - else
+    div.col-md
+      = t('subscription.info.unsub_daily')
+    div.col-sm.text-right
+      = form_for @subscription do |f|
+        = f.hidden_field :email, value: current_user.email
+        = f.hidden_field :time, value: 'daily'
+        .actions = f.submit t('subscription.subscribe'), class: "btn btn-success"
+
+div.row.alert.alert-success
+  - if @isSignedWeekly
+    div.col-md
+      = t('subscription.info.sub_weekly')
+    div.col-sm.text-right
+      - @weeklySubscription.each do |subscription|
+        = button_to t('subscription.unsubscribe'),
+                    subscription, 
+                    class: "btn btn-danger", 
+                    data: { confirm: t('questions.are_you_sure')},
+                    method: :delete
+  - else
+    div.col-md
+      = t('subscription.info.unsub_weekly')
+    div.col-sm.text-right
+      = form_for @subscription do |f|
+        = f.hidden_field :email, value: current_user.email
+        = f.hidden_field :time, value: 'weekly'
+        .actions = f.submit t('subscription.subscribe'), class: "btn btn-success"

@@ -1,0 +1,31 @@
+ru:
+    user:
+      email: "Email"
+      password: "Пароль"
+      password_min: " символов минимум"
+      password_confirm: "Подтверждение пароля"
+      current_password: "Текущий пароль"
+
+      actions:
+        sign_up: "Зарегестрироваться"
+        sign_in: "Войти"
+        sign_out: "Выйти"
+        register: "Зарегестрироваться"
+        edit: "Профиль"
+        update: "Обновить"
+        cancel: "Удалить аккаунт"
+        mails: "Подписки"
+
+      info:
+        leave_blank: " (Оставьте пустым, если не хотите менять пароль)"
+        we_need_current_password: " (Нам нужен ваш текущий пароль для подтверждения изменений)"
+
+      role:
+        admin: "Администратор"
+        quest: "Гость"
+
+      pages:
+        edit: "Редактировать профиль"
+        
+      registration:
+        title: "Регистрация"

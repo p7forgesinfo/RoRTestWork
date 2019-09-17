@@ -1,0 +1,30 @@
+= form_for @news do |f|
+     
+    - if @news.errors.any?
+        #error_explanation
+        h2 = "#{pluralize(@news.errors.count, "error")} prohibited this news from being saved:"
+            
+        ul
+            - @news.errors.full_messages.each do |message|
+                li = message
+
+    .field.form-group
+        = f.label :date, t('news.date'), class: "mr-2"
+        
+        /!
+            Мы хотели понять её качества,
+            Мы искали, мы правда верили.
+            Но не может она, артачится,
+            Нам поможет только наследие.
+
+        = f.date_select :date, with_css_classes: true
+    
+    .field.form-group
+        = f.label t('news.title')
+        = f.text_field :title, class: "form-control"
+    
+    .field.form-group
+        = f.label t('news.text')
+        = f.text_area :text, class: "form-control", rows: 14
+
+    .actions = f.submit t('news.actions.save'), class: "btn btn-success"

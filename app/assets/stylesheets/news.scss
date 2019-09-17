@@ -1,0 +1,21 @@
+// Place all the styles related to the News controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap";
+
+.row {
+	margin: 10px;
+}
+
+.new_news,
+.edit_news {
+	width: 100%;
+}
+
+.day,
+.month,
+.year {
+	@extend .form-control;
+	@extend .d-inline-flex;
+	width: auto;
+}

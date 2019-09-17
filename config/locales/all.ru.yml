@@ -1,0 +1,12 @@
+# It's for all app
+ru:
+  title: "RnD Soft - тестовое задание"
+  separator: "  |  "
+  back: "Назад"
+
+  pages:
+    home: "Главная"
+    news: "Новости"
+
+  questions:
+    are_you_sure: "Вы уверены?"

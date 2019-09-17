@@ -1,0 +1,34 @@
+-if notice
+	div.row.alert.alert-success
+		 = notice
+
+div.row.h3.bg-light = @news.title
+
+div.row = @news.date.strftime(t('news.date') + ": %d/%m/%y")
+
+div.row
+	- if @news.redactions < 5
+		= t('news.redactions')
+		= 5 - @news.redactions
+	- else
+		= t('news.notices.cannot_edit')
+
+
+div.row.bg-light
+	pre = @news.text
+
+div.row
+	- if @userCanEdit
+	    = button_to t('news.actions.edit'),
+	                edit_news_path(@news),
+	                class: "btn btn-info btn-sm ml-1",
+	                method: :get
+
+	- if @userCanDelete
+	    = button_to t('news.actions.delete'),
+	                @news, 
+	                class: "btn btn-danger btn-sm ml-1", 
+	                data: { confirm: t('questions.are_you_sure') },
+	                method: :delete
+
+= link_to 'Back', news_index_path

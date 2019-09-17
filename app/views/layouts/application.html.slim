@@ -1,0 +1,54 @@
+doctype html
+html
+  head
+    title = t('title')
+
+    = csrf_meta_tags 
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  body
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light
+      ul.navbar-nav.mr-auto
+        li.nav-item.active
+          = link_to t('pages.home'), root_path, class: "nav-link"
+        
+        li.nav-item
+          = link_to t('pages.news'), news_index_path, class: "nav-link"
+        
+        - if @userCanCreate
+          li.nav-item
+            = link_to t('news.actions.create'), new_news_path, class: "nav-link"
+
+      span.navbar-text        
+        - if user_signed_in?
+          span
+            - if current_user.admin
+              = t('user.role.admin')
+            - else
+              = t('user.role.quest')
+
+            = t('separator')
+
+            = link_to t('user.actions.mails'),
+                      subscriptions_path            
+
+            = t('separator')
+            
+            = link_to t('user.actions.edit'),
+                      edit_user_registration_path
+            
+            = t('separator')
+            
+            = link_to t('user.actions.sign_out'),
+                      destroy_user_session_path,
+                      method: :delete
+           
+        - else
+          = link_to t('user.actions.sign_in'), new_user_session_path
+          |  или 
+          = link_to t('user.actions.register'), new_user_registration_path
+    
+    /
+      В рамках задания можно позволить себе небольшую сдабость
+      и сделать контейнер в наруже, так как каждый тут в контейнере.
+    div.container = yield
